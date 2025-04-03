@@ -6,129 +6,168 @@
   <title>内村星弥の左脳</title>
   <style>
     :root {
-  --primary-color: #2c83d6;
-  --secondary-color: #e8494a;
-  --text-color: #333;
-  --bg-color: #f8f9fa;
-  --slant-angle: -3deg; /* 斜めの角度を変数で管理 */
+            --primary: #2A5C82;
+            --accent: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow-x: hidden;
+            background: #0a192f;
+            color: white;
+        }
+
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: titleReveal 1s 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes titleReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 10%;
+            width: 40%;
+            height: 100vh;
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            transform: translateX(30%);
+            opacity: 0;
+            animation: imageReveal 1.5s 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes imageReveal {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #4A4A82 0%, transparent 100%);
+            mix-blend-mode: multiply;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+	.hero-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0.8rem;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    text-align: justify;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  overflow-x: hidden; /* 斜めセクションによる横スクロールを防止 */
-}
-
-/* 斜めセクションの実装 */
-.hero-section {
-  position: relative;
-  padding: 100px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  transform: skewY(var(--slant-angle)); /* セクション全体を斜めに */
-  margin: 60px 0; /* 傾きによるはみ出しを考慮して余白を追加 */
-  overflow: hidden;
-}
-
-/* 中身のコンテンツは反対方向に傾けて水平に戻す */
-.hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  transform: skewY(calc(-1 * var(--slant-angle))); /* 逆方向の傾き */
-}
-
-/* 画像エリアに斜め装飾を追加 */
-.hero-image {
-  flex: 0 0 45%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
 
 
 
-    /* ヘッダーセクション */
-    .hero-section {
-      padding: 80px 0;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        .scrolldown {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollBounce 2s infinite;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: gridReveal 1s 1.5s forwards;
+        }
+
+        @keyframes gridReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .data-item {
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+            background: rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                padding-top: 100px;
+            }
+
+            .hero-image {
+                position: relative;
+                right: 0;
+                width: 100%;
+                height: 50vh;
+                margin-top: 2rem;
+            }
+
+
+	.hero-text {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin: 0.6rem;
+        padding-right: 10px;
+        padding-left: 10px;
+        letter-spacing: -0.02em;
     }
 
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      gap: 50px;
-    }
-
-    .hero-image {
-      flex: 0 0 45%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .hero-image img {
-        width: 100%;
-  height: auto;
-  display: block;
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%); /* 画像も右下を斜めに */
-    }
-
-    .hero-content {
-      flex: 1;
-    }
-
-    .hero-title {
-       font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  position: relative;
-    }
-
-.hero-title::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 100px;
-  height: 4px;
-  background: var(--secondary-color);
-  transform: skewX(-20deg); /* タイトル下の線も斜めに */
-}
-
-    .hero-text {
-      font-size: 1rem;
-  color: #666;
-  max-width: 600px;
-    }
-
-
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
-  background: rgba(44, 131, 214, 0.1);
-  border-radius: 50%;
-  z-index: 0;
-}
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
 
 
     /* マーケティング実績セクション */
@@ -248,10 +287,7 @@ body {
         clip-path: circle(80% at 30% 50%);
       }
 
-      .hero-content {
-        text-align: center;
-        padding: 0 20px;
-      }
+   
 
       .hero-title {
     font-size: 2rem;
@@ -274,16 +310,24 @@ body {
         <img src="img\uchimura.png" alt="内村顔">
       </div>
       <div class="hero-content">
-        <h1 class="hero-title">ヒト・モノ・カネ。<br>全事象を多角的に捉え、論理的かつ勝算のある答えを出すマーケター</h1>
+        <h1 class="hero-title">ヒト・モノ・カネ。<br>全事象を多角的に捉え、論理的に勝算のある答えに導く</h1>
         <p class="hero-text">
          Webデザイナーとして4年間、コーディングや画像制作スキルを活かし、ユーザー体験を重視したWebサイト構築に貢献。その後、デジタルマーケターとして4年間、リード育成、データ分析に基づくマーケティング施策の最適化を推進。直近では食品メーカーにて、ECサイトのアクセス数・CVR向上のための効果測定に基づいたコンテンツ最適化を実施。
         </p>
       </div>
     </div>
+ <div class="scrolldown">
+            <svg width="30" height="50" viewBox="0 0 30 50">
+                <path d="M15 0 L15 25 M15 25 L20 20 M15 25 L10 20" stroke="white" fill="none" stroke-width="2"/>
+                <path d="M15 35 L15 50" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </section>
+
   </section>
 
   <section class="results-section">
-<div class="section-bg-text">ACHIEVEMENTS</div>
+<div class="section-bg-text"><div class="achievements-text">ACHIEVEMENTS</div></div>
     <div class="container">
       <h2 class="section-title">主要実績事例</h2>
       
@@ -390,6 +434,45 @@ body {
 　  </section>
 
 
+<section class="career-section">
+ <div class="section-bg-text">CAREER</div>
+  <div class="container">
+    <h2 class="section-title">経歴</h2>
+    
+    <div class="timeline">
+      <!-- ミタデン -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>株式会社ミタデン　2017年1月～2022年3月</h3>
+          <p>経営企画部配属</p>
+        </div>
+      </div>
+
+      <!-- OVER -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>株式会社OVER.　2023年1月～2024年8月</h3>
+          <p>インサイドセールス・マーケティング配属</p>
+        </div>
+      </div>
+
+      <!-- 大橋製茶（点滅アニメーション） -->
+      <div class="timeline-item active">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>株式会社大橋製茶　2024年10月～</h3>
+          <p>Eコマース・マーケティング部配属</p>
+        </div>
+      </div>
+    </div>
+ 　</div>
+  </div>
+</section>
+
+
+
    <style>
         :root {
             --primary-color: #2c83d6;
@@ -445,6 +528,9 @@ body {
             user-select: none;
         }
 
+
+
+
         /* 内村の左脳セクション */
         .success-cases {
             display: grid;
@@ -495,6 +581,7 @@ body {
 
 .bg-text[data-section="brain"] {
     color: rgba(34, 139, 34, 0.1); /* 緑色 (Forest Green) を適用し透明度を0.1に設定 */
+
 }
 
 
@@ -525,42 +612,6 @@ body {
     </style>
 
 
-<section class="career-section">
- <div class="section-bg-text">CAREER</div>
-  <div class="container">
-    <h2 class="section-title">経歴</h2>
-    
-    <div class="timeline">
-      <!-- ミタデン -->
-      <div class="timeline-item">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h3>株式会社ミタデン　2017年1月～2022年3月</h3>
-          <p>経営企画部配属</p>
-        </div>
-      </div>
-
-      <!-- OVER -->
-      <div class="timeline-item">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h3>株式会社OVER.　2023年1月～2024年8月</h3>
-          <p>インサイドセールス・マーケティング配属</p>
-        </div>
-      </div>
-
-      <!-- 大橋製茶（点滅アニメーション） -->
-      <div class="timeline-item active">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h3>株式会社大橋製茶　2024年10月～</h3>
-          <p>Eコマース・マーケティング部配属</p>
-        </div>
-      </div>
-    </div>
- 　</div>
-  </div>
-</section>
 
 <style>
 
@@ -576,9 +627,10 @@ body {
     position: absolute;
   top: 15%; /* 大幅に上方に移動 */
     right: 0;          /* 右側に配置 */
-  left: auto;        /* 左側の位置指定を解除 */
+ transform: translate3d(-100%, -15%, 0); /* GPU最適化 */
+  will-change: transform;
+  animation: bg-scroll 25s linear infinite;
   text-align: right; /* テキスト自体も右寄せ */
-  transform: translateY(-15%) translateX(-5%); /* 位置調整 */
   font-size: clamp(8rem, 25vw, 18rem); /* サイズ拡大 */
   font-weight: 900;
   color: rgba(0, 0, 0, 0.1); /* 透明度調整 */
@@ -592,6 +644,16 @@ body {
   letter-spacing: -0.03em;
 
 }
+
+@keyframes bg-scroll {
+    0% { transform: translate3d(-100%, -15%, 0); }
+    100% { transform: translate3d(100%, -15%, 0); }
+}
+
+
+
+
+
 
 /* 経歴セクションカスタマイズ */
 .career-section .section-bg-text {
@@ -609,8 +671,21 @@ body {
      top: 12%;
  font-size: clamp(5.5rem, 16vw, 13rem); /* さらにサイズ縮小 */
   letter-spacing: -0.07em; /* 文字間隔をより狭く */
-  transform: translate(-2%, -12%); /* 左側に少しずらす */
+    transform: none; /* 既存のtransformを上書き解除 */
   white-space: nowrap;
+animation: bg-scroll 30s linear infinite;
+left: auto; /* left指定を削除 */
+    right: auto;
+
+}
+
+@keyframes moveText {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
 
@@ -747,13 +822,9 @@ body {
     margin-left: 1rem;
   }
 
- .section-bg-text {
- top: 8% !important;
-    transform: translate(-15%, -8%) !important;
-    font-size: clamp(6rem, 25vw, 12rem);
-    line-height: 0.6;
 
-  }
+
+
  .career-section .section-bg-text {
     top: 5% !important;
     transform: translate(-20%, -5%) !important;
@@ -762,7 +833,7 @@ body {
   .results-section .section-bg-text {
     top: 7% !important;
     font-size: clamp(3.8rem, 16vw, 9rem);
-    transform: translate(-10%, -7%) !important;
+ 
   }
 
 }
