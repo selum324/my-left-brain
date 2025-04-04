@@ -54,15 +54,21 @@
         }
 
         .hero-image {
-            position: absolute;
-            right: 10%;
-            width: 40%;
-            height: 100vh;
-            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-            transform: translateX(30%);
-            opacity: 0;
-            animation: imageReveal 1.5s 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+         position: absolute;
+    right: 10%;
+    width: 40%;
+    height: 100vh;
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    transform: translateX(30%);
+    opacity: 0;
+    animation: imageReveal 1.5s 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
+.hero-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
         @keyframes imageReveal {
             to {
@@ -219,7 +225,7 @@
 
     .achievement-number {
       font-size: 1.5rem;
-      color: var(--primary-color);
+      color: black;
       font-weight: bold;
       margin-bottom: 15px;
     }
@@ -307,7 +313,10 @@
   <section class="hero-section">
     <div class="hero-container">
       <div class="hero-image">
-        <img src="img\uchimura.png" alt="内村顔">
+        <video autoplay muted loop playsinline>
+        <source src="img\uchimuraMTG.permp4.mp4" type="video/mp4">
+        お使いのブラウザは動画タグをサポートしていません。
+    </video>
       </div>
       <div class="hero-content">
         <h1 class="hero-title">ヒト・モノ・カネ。<br>全事象を多角的に捉え、論理的に勝算のある答えに導く</h1>
@@ -329,32 +338,32 @@
   <section class="results-section">
 <div class="section-bg-text"><div class="achievements-text">ACHIEVEMENTS</div></div>
     <div class="container">
-      <h2 class="section-title">主要実績事例</h2>
+      <h2 class="section-title">主要実績</h2>
       
       <div class="achievement-grid">
         <div class="achievement-card">
-          <div class="achievement-number">01</div>
-          <h3 class="achievement-title">ユーザー行動分析とABテストによる<br>コンバージョン最適化</h3>
+          <div class="achievement-number">1</div>
+          <h3 class="achievement-title">ユーザー行動分析とABテストによりコンバージョン率36％を実現</h3>
           <ul class="achievement-list">
             <li class="achievement-item">行動パターン分析によるUI改善</li>
             <li class="achievement-item">多変量テストによるCTA最適化</li>
-            <li class="achievement-item">コンバージョン率32%向上</li>
+            <li class="achievement-item">顧客のフェーズを見極めてセグメント化</li>
           </ul>
         </div>
 
         <div class="achievement-card">
-          <div class="achievement-number">02</div>
-          <h3 class="achievement-title">ターゲット分析とクリエイティブ戦略による<br>認知拡大</h3>
+          <div class="achievement-number">2</div>
+          <h3 class="achievement-title">ターゲット分析とクリエイティブ戦略で到達数600％の大幅拡大</h3>
           <ul class="achievement-list">
             <li class="achievement-item">ペルソナ別メッセージ設計</li>
             <li class="achievement-item">動画広告クリエイティブ開発</li>
-            <li class="achievement-item">リーチ数150%増加</li>
+            <li class="achievement-item">AIを活用した偏りのない迅速な市場リサーチ</li>
           </ul>
         </div>
 
         <div class="achievement-card">
-          <div class="achievement-number">03</div>
-          <h3 class="achievement-title">コンテンツ最適化と内部構造改善による<br>検索順位向上</h3>
+          <div class="achievement-number">3</div>
+          <h3 class="achievement-title">SEO戦略で多数キーワード上位表示を実現し顧客流入数1000％増加を達成</h3>
           <ul class="achievement-list">
             <li class="achievement-item">SEOコンテンツ戦略策定</li>
             <li class="achievement-item">テクニカルSEO改善</li>
@@ -580,27 +589,93 @@
         }
 
 .bg-text[data-section="brain"] {
-    color: rgba(34, 139, 34, 0.1); /* 緑色 (Forest Green) を適用し透明度を0.1に設定 */
+    color: rgba(34, 139, 34, 0.8); /* 緑色 (Forest Green) を適用し透明度を0.1に設定 */
+ animation: bg-scroll-right 30s linear infinite;
 
+}
+
+@keyframes bg-scroll-right {
+  0% { transform: translate3d(100%, -50%, 0); }
+  100% { transform: translate3d(-100%, -50%, 0); }
 }
 
 
 　　　　/* BRAINの背景テキスト修正 */
 .bg-text brain-bg-text {
-   color: rgba(34, 139, 34, 0.1); /* 緑色 (Forest Green) を適用し透明度を0.1に設定 */
+   color: rgba(34, 139, 34, 0.8); /* 緑色 (Forest Green) を適用し透明度を0.1に設定 */
     top: 15%;
-    left: 0; /* 左の位置を修正して「B」が見えるように */
+    left: -50%; /* 左の位置を修正して「B」が見えるように */
     transform: translateX(-5%); /* 微調整 */
 }
 
 /* WEAPONSの背景テキスト修正 */
 .weapons-bg-text {
-    color: rgba(232, 73, 74, 0.08); /* 赤色を薄く */
+    color: rgba(232, 73, 74, 0.8); /* 赤色を薄く */
     top: 20%;
-    left: 0; /* 左の位置を修正して「W」が見えるように */
+    right: 0%;
     transform: translateX(-5%); /* 微調整 */
+ animation: bg-scroll-left 60s linear infinite;
 }
-	
+	/* 左から右へのアニメーション */
+@keyframes bg-scroll-left {
+  0% { transform: translate3d(-100%, -50%, 0); }
+  100% { transform: translate3d(100%, -50%, 0); }
+}
+
+/* 中央揃え修正版 */
+.achievement-number {
+  text-align: center;
+  width: 100%;
+  position: relative;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* グラデーション背景付き */
+.achievement-number::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(145deg, #2A5C82 0%, #5FB0E8 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  box-shadow: 0 4px 15px rgba(42, 92, 130, 0.3);
+}
+
+.achievement-number span {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* ホバーエフェクト */
+.achievement-card:hover .achievement-number::before {
+  transform: translate(-50%, -50%) scale(1.1);
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .achievement-number::before {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .achievement-number span {
+    font-size: 1.5rem;
+  }
+}
+
 
         /* レスポンシブ対応 */
         @media (max-width: 768px) {
@@ -608,6 +683,7 @@
     .case-item:nth-child(even) {
         flex-direction: column;
     }
+
         }
     </style>
 
@@ -626,7 +702,7 @@
 .section-bg-text {
     position: absolute;
   top: 15%; /* 大幅に上方に移動 */
-    right: 0;          /* 右側に配置 */
+
  transform: translate3d(-100%, -15%, 0); /* GPU最適化 */
   will-change: transform;
   animation: bg-scroll 25s linear infinite;
@@ -657,25 +733,23 @@
 
 /* 経歴セクションカスタマイズ */
 .career-section .section-bg-text {
-  color: rgba(44, 131, 214, 0.1); /* 薄い青色 */
-   top: 10%;
+  color: rgba(44, 131, 214, 0.8); /* 薄い青色 */
+   top: 20%;
  font-size: clamp(5.5rem, 16vw, 13rem); /* さらにサイズ縮小 */
-
+  animation: bg-scroll-right 35s linear infinite;
   transform: translate(-8%, -10%)
-
 }
 
 /* 実績セクションカスタマイズ */
 .results-section .section-bg-text {
-  color: rgba(232, 73, 74, 0.1); /* 薄い赤色 */
+  color: rgba(232, 73, 74, 0.8); /* 薄い赤色 */
      top: 12%;
  font-size: clamp(5.5rem, 16vw, 13rem); /* さらにサイズ縮小 */
   letter-spacing: -0.07em; /* 文字間隔をより狭く */
     transform: none; /* 既存のtransformを上書き解除 */
   white-space: nowrap;
-animation: bg-scroll 30s linear infinite;
-left: auto; /* left指定を削除 */
-    right: auto;
+animation: bg-scroll 40s linear infinite;
+left: 50%; /* left指定を削除 */
 
 }
 
@@ -827,13 +901,24 @@ left: auto; /* left指定を削除 */
 
  .career-section .section-bg-text {
     top: 5% !important;
-    transform: translate(-20%, -5%) !important;
+    animation: bg-scroll-mobile 35s linear infinite;
+    /* 初期位置を画面左端外から画面右端内に変更 */
+    transform: translate3d(-50%, -5%, 0); /* 変更点 */
+  }
+@keyframes bg-scroll-mobile { /* 追加 */
+    0% {
+      transform: translate3d(120%, -5%, 0); /* モバイル右開始位置 */
+    }
+    100% {
+      transform: translate3d(-120%, -5%, 0); /* モバイル左終了位置 */
+    }
+  }
   }
   
   .results-section .section-bg-text {
     top: 7% !important;
     font-size: clamp(3.8rem, 16vw, 9rem);
- 
+  
   }
 
 }
