@@ -149,8 +149,9 @@
 
         @media (max-width: 768px) {
             .hero-section {
-                flex-direction: column;
-                padding-top: 100px;
+                height: auto;
+   		 min-height: 100dvh;
+    		padding: 60px 20px;
             }
 
             .hero-image {
@@ -161,7 +162,10 @@
                 margin-top: 2rem;
             }
 
-
+.hero-content {
+    padding: 20px;
+    transform: none !important; /* モバイル用にアニメーション解除 */
+  }
 	.hero-text {
         font-size: 0.85rem;
         line-height: 1.4;
@@ -275,9 +279,7 @@
 
     /* レスポンシブ対応 */
     @media (max-width: 768px) {
-   .hero-section {
-    padding: 80px 0;
-  }
+
 
       .hero-container {
         flex-direction: column;
@@ -612,6 +614,7 @@ background: rgba(255, 255, 255, 0.05);
   .about-content {
     flex-direction: column;
     text-align: center;
+
   }
   
   .about-image {
@@ -728,7 +731,7 @@ background: rgba(255, 255, 255, 0.05);
         }
 
         .case-image {
-            flex: 0 0 45%;
+            
             border-radius: 8px;
             overflow: hidden;
         }
@@ -874,6 +877,7 @@ background: rgba(255, 255, 255, 0.05);
     .case-item:nth-child(even) {
         flex-direction: column;
     }
+
 
         }
     </style>
@@ -1155,6 +1159,7 @@ left: 50%; /* left指定を削除 */
 @media (max-width: 768px) {
   .about-me-section {
     padding: 60px 0;
+
   }
   
   .about-text {
